@@ -29,7 +29,7 @@ const SpinnerLoader = ({
       display: inline-block;
       animation: ${clip} ${0.75 / speedMultiplier}s 0s infinite linear;
       animation-fill-mode: both;
-      z-index: 1 !important;
+      //z-index: 1 !important;
     `;
   };
 

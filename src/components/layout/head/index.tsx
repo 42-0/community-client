@@ -2,10 +2,11 @@ import Head from 'next/head';
 
 export interface Props {
   pageName: string;
+  home?: boolean,
   siteTitle: string;
 }
 
-const HeadComponent = ({ pageName, siteTitle }: Props) => {
+const HeadComponent = ({ pageName, home, siteTitle }: Props) => {
   return (
     <>
       {/* Head */}
@@ -22,10 +23,7 @@ const HeadComponent = ({ pageName, siteTitle }: Props) => {
         <meta name="og:title" content={`${pageName} ${siteTitle}`} />
         <meta name="twitter:card" content="summary_large_image" />
         <title>
-          {pageName}
-          {' '}
-          -
-          {' '}
+          { home ? null : `${pageName} - ` }
           {siteTitle}
         </title>
       </Head>

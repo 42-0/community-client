@@ -1,7 +1,7 @@
 import { css, keyframes, SerializedStyles } from '@emotion/react';
 import { primaryColor } from '../../../../styles/color.style';
 
- interface Props {
+interface Props {
    loading : boolean;
    color? : string;
    size? : number;

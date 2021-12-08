@@ -4,16 +4,17 @@ import { main } from './index.style';
 
 export interface LayoutProps {
   children: ReactNode;
-  pageName: string;
+  home?: boolean,
+  pageName?: string;
 }
 
-const Layout = ({ children, pageName }: LayoutProps) => {
+const Layout = ({ children, home = false, pageName = '' }: LayoutProps) => {
   const siteTitle = '매체';
 
   return (
     <>
       {/* Head */}
-      <HeadComponent pageName={pageName} siteTitle={siteTitle} />
+      <HeadComponent pageName={pageName} home={home} siteTitle={siteTitle} />
 
       {/* Header */}
       {/* <header> */}
