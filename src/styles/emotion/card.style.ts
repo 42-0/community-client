@@ -1,4 +1,5 @@
 import { css } from '@emotion/react';
+import { primaryColor } from '../color.style';
 
 export const cardsItem = css`
   width: 100%;
@@ -51,8 +52,10 @@ export const card = css`
   background-color: #ffffff;
 
   &:hover {
-    color: #0070f3;
-    border-color: #0070f3;
+    //color: #0070f3;
+    //border-color: #0070f3;
+    color: ${primaryColor};
+    border-color: ${primaryColor};
   }
 
   //@media screen and (max-width: 768px) {
