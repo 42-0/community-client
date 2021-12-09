@@ -67,18 +67,24 @@ const Contents = ({ page }: Props) => {
                     top: 0;
                     left: 0;
                     width: 100%;
-                    height: 100%; 
+                    height: 100%;
                   `]}
                 />
               </a>
 
-              <h4 css={[css`
-                padding: 0.5rem;
-                white-space: initial;
+              <div css={[css`
+                border-top: 1px solid rgb(226,226,226);
               `]}
               >
-                {content?.title}
-              </h4>
+                <h4 css={[css`
+                  padding: 0.5rem;
+                  white-space: initial;
+                `]}
+                >
+                  {content?.title}
+                </h4>
+
+              </div>
 
             </div>
 
