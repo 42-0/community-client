@@ -14,12 +14,11 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
         {/* TODO : ErrorBoundary 컴포넌트 작업 */}
         {/* <ErrorBoundary> */}
         {/* <Suspense fallback={( */}
-        {/*  <div> loading ....</div> */}
-        {/*  // <div css={loadingWrapper}> */}
-        {/*  //   <div css={loadingStyle}> */}
-        {/*  //     <PulseLoader loading /> */}
-        {/*  //   </div> */}
-        {/*  // </div> */}
+        {/*  <div css={loadingWrapper}> */}
+        {/*    <div css={loadingStyle}> */}
+        {/*      <PulseLoader loading /> */}
+        {/*    </div> */}
+        {/*  </div> */}
         {/* )} */}
         {/* > */}
         <Component {...pageProps} />

@@ -1,21 +1,20 @@
 import axios from 'axios';
-import { selector } from 'recoil';
+import { selector, selectorFamily } from 'recoil';
 
-export const fetchPosts = async () => {
+export const fetchPosts = async (page:number) => {
   try {
-    const response = await axios.get('http://52.78.54.195:3000/contents');
-    return response;
-    // return response.data;
+    const response = await axios.get(`http://52.78.54.195:3000/contents/list/${page}`);
+    return response.data;
   } catch (e) {
     console.error(e);
   }
   return undefined;
 };
 
-export const postsSelector = selector({
+export const postsSelector = selectorFamily({
   key: '@pages/home/posts',
-  get: async ({ get }) => {
-    return fetchPosts();
+  get: (page: number) => async ({ get }) => {
+    return fetchPosts(page);
   },
 });
 
