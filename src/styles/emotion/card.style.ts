@@ -1,23 +1,24 @@
 import { css } from '@emotion/react';
 
 export const cardsItem = css`
-    display: flex;
-    //padding: 0.2rem;
+  width: 100%;
+  display: flex;
+  //padding: 0.2rem;
 
   @media (min-width: 40rem) {
-      width: 50%;
+    width: 50%;
   }
   @media (min-width: 56rem) {
-      width: 33.3333%;
+    width: 33.3333%;
   }
   @media (min-width: 72rem) {
-      width: 25%;
+    width: 25%;
   }
   @media (min-width: 112rem) {
-      width: 20%;
+    width: 20%;
   }
   @media (min-width: 148rem) {
-      width: 16.6666%;
+    width: 16.6666%;
   }
 `;
 

@@ -51,8 +51,11 @@ const Contents = ({ page }: Props) => {
               <a
                 href="http://localhost:9909"
                 css={[css`
-                  max-height: 300px;
-                  //width: 100% !important;
+                  position: relative;
+                  width: 100%;
+                  height: 0;
+                  padding-bottom: 56.26%;
+                  overflow: hidden;
                 `]}
               >
                 <img
@@ -60,9 +63,11 @@ const Contents = ({ page }: Props) => {
                   // src="https://picsum.photos/500/300/?image=11"
                   alt={content?.title}
                   css={[css`
-                    height: auto;
-                    max-width: 100%;
-                    vertical-align: middle;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%; 
                   `]}
                 />
               </a>
