@@ -1,45 +1,59 @@
 import type { NextPage } from 'next';
-import { css } from '@emotion/react';
 import React, { lazy, Suspense, useState } from 'react';
-import dynamic from 'next/dynamic';
+import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
 import Layout from '../components/layout';
 import { loadingStyle, loadingWrapper } from '../styles/emotion/loading.style';
 import PulseLoader from '../components/ui/loading/pulse/pulse-loader';
 
 import Contents from '../components/pages/index/contents';
+import { Content } from '../stores/home/home.model';
+import { currentCursorInternal } from '../stores/home/home.store';
 // const Contents = dynamic(() => import('../components/pages/index/contents'), { suspense: true });
 // const Contents = lazy(() => import('../components/pages/index/contents'));
 
 const Home: NextPage = () => {
-  const [page, setPage] = useState<number>(1);
+  // const [page, setPage] = useState<number>(1);
+  const [page, setPage] = useRecoilState<number>(currentCursorInternal);
+  // const page = useRecoilValue<number>(currentCursorInternal);
+  // const setPage = useSetRecoilState<number>(currentCursorInternal);
 
   return (
     <Layout home>
 
-      {/* <div css={[css` */}
-      {/*  //text-align: center; */}
-      {/*  display: flex; */}
-      {/*  flex-direction: column; */}
-      {/*  align-items: center; */}
-      {/* `]} */}
+      {/* <Suspense fallback={( */}
+      {/*  <div css={loadingWrapper}> */}
+      {/*    <div css={loadingStyle}> */}
+      {/*      <PulseLoader loading /> */}
+      {/*    </div> */}
+      {/*  </div> */}
+      {/*  )} */}
       {/* > */}
-
-      <Suspense fallback={(
-        <div css={loadingWrapper}>
-          <div css={loadingStyle}>
-            <PulseLoader loading />
-          </div>
-        </div>
-        )}
+      <Contents page={page} setPage={setPage} />
+      {/* </Suspense> */}
+      <br />
+      <button
+        type="button"
+        onClick={() => {
+          console.log('click!!');
+          setPage((value) => value + 1);
+        }}
+        // onClick={() => setPage((prevState) => prevState + 1)}
       >
-        <Contents page={page} />
-      </Suspense>
+        page+1클릭!
+      </button>
+      <button
+        type="button"
+        onClick={() => console.log('page :::', page)}
+      >
+        테스트
+      </button>
+      <div>
+        page :
+        {page}
+      </div>
       <br />
-      <button type="button" onClick={() => setPage((prevState) => prevState + 1)}>page+1</button>
       <br />
       <br />
-      <br />
-      {/* </div> */}
 
     </Layout>
   );

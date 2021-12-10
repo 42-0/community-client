@@ -1,20 +1,47 @@
 import axios from 'axios';
-import { selector, selectorFamily } from 'recoil';
+import {
+  atom, RecoilState, selector, selectorFamily, waitForNone,
+} from 'recoil';
+import { Content } from './home.model';
 
-export const fetchPosts = async (page:number) => {
+export const postsState = atom<Content[] >({
+  key: '@pages/home/postsState',
+  default: [],
+});
+export const currentCursorInternal = atom<number>({
+  key: '@pages/home/currentCursorInternal',
+  default: 1,
+});
+
+export const fetchPosts = async (page: number) => {
   try {
     const response = await axios.get(`http://52.78.54.195:3000/contents/list/${page}`);
-    return response.data;
+    return response.data?.content;
+    // return [...postsState, ...response.data?.content];
   } catch (e) {
     console.error(e);
   }
   return undefined;
 };
 
-export const postsSelector = selectorFamily({
+// export const postsSelector = selectorFamily({
+//   key: '@pages/home/posts',
+//   get: (page: number) => async ({ get }) => {
+//     return fetchPosts(page);
+//   },
+// });
+
+export const postsSelector = selector({
   key: '@pages/home/posts',
-  get: (page: number) => async ({ get }) => {
-    return fetchPosts(page);
+  get: ({ get }) => get(currentCursorInternal),
+  set: async ({ get, set }) => {
+    const current = get(currentCursorInternal);
+    const next = current + 1;
+
+    const newData = await fetchPosts(next);
+    console.log('postsSelector - newData :::', newData);
+    set(currentCursorInternal, next);
+    set(postsState, (existing) => [...existing, ...newData]);
   },
 });
 
