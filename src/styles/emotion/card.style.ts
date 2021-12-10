@@ -9,18 +9,18 @@ export const cardsItem = css`
   @media (min-width: 40rem) {
     width: 50%;
   }
-  @media (min-width: 56rem) {
+  @media (min-width: 72rem) {
     width: 33.3333%;
   }
-  @media (min-width: 72rem) {
+  @media (min-width: 112rem) {
     width: 25%;
   }
-  @media (min-width: 112rem) {
-    width: 20%;
-  }
-  @media (min-width: 148rem) {
-    width: 16.6666%;
-  }
+  //@media (min-width: 112rem) {
+  //  width: 20%;
+  //}
+  //@media (min-width: 148rem) {
+  //  width: 16.6666%;
+  //}
 `;
 
 export const card = css`

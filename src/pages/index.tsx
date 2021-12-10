@@ -16,13 +16,21 @@ const Home: NextPage = () => {
   return (
     <Layout home>
 
+      {/* <div css={[css` */}
+      {/*  //text-align: center; */}
+      {/*  display: flex; */}
+      {/*  flex-direction: column; */}
+      {/*  align-items: center; */}
+      {/* `]} */}
+      {/* > */}
+
       <Suspense fallback={(
         <div css={loadingWrapper}>
           <div css={loadingStyle}>
             <PulseLoader loading />
           </div>
         </div>
-       )}
+        )}
       >
         <Contents page={page} />
       </Suspense>
@@ -31,6 +39,7 @@ const Home: NextPage = () => {
       <br />
       <br />
       <br />
+      {/* </div> */}
 
     </Layout>
   );

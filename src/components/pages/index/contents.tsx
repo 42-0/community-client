@@ -22,91 +22,76 @@ const Contents = ({ page }: Props) => {
 
   return (
     <>
-
       <div css={[css`
-        //display: flex;
-        //flex-direction: column;
-        //align-items: center;
-        //flex-wrap: wrap;
-        //justify-content: center;
-
         display: flex;
-        flex-wrap: wrap;
-        list-style: none;
-        margin: 0;
-        padding: 0;
+        flex-direction: column;
+        align-items: center;
+        //flex-wrap: wrap; 
+        //justify-content: center;
       `]}
       >
-
-        {posts?.content?.map((content: Content) => (
-          <div
-            key={content?.id}
-            css={[cardsItem, css`
-            `]}
-          >
-            <div css={[card, css`
-            `]}
+        <div css={[css`
+          max-width: 1380px;
+          display: flex;
+          flex-wrap: wrap;
+          list-style: none;
+          margin: 0;
+          padding: 0;
+        `]}
+        >
+          {posts?.content?.map((content: Content) => (
+            <div
+              key={content?.id}
+              css={[cardsItem, css`
+              `]}
             >
-              {/* <Image src={value?.contentURL} /> */}
-              <a
-                href="http://localhost:9909"
-                css={[css`
-                  position: relative;
-                  width: 100%;
-                  height: 0;
-                  padding-bottom: 56.26%;
-                  overflow: hidden;
-                `]}
-              >
-                <img
-                  src={content?.files[0]?.filePath}
-                  // src="https://picsum.photos/500/300/?image=11"
-                  alt={content?.title}
-                  css={[css`
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                    width: 100%;
-                    height: 100%;
-                  `]}
-                />
-              </a>
-
-              <div css={[css`
-                border-top: 1px solid rgb(226,226,226);
+              <div css={[card, css`
               `]}
               >
-                <h4 css={[css`
-                  padding: 0.5rem;
-                  white-space: initial;
+                <a
+                  href="http://localhost:9909"
+                  css={[css`
+                    position: relative;
+                    width: 100%;
+                    height: 0;
+                    padding-bottom: 56.26%;
+                    overflow: hidden;
+                  `]}
+                >
+                  {/* <Image src={value?.contentURL} /> */}
+                  <img
+                    src={content?.files[0]?.filePath}
+                    // src="https://picsum.photos/500/300/?image=11"
+                    alt={content?.title}
+                    css={[css`
+                      position: absolute;
+                      top: 0;
+                      left: 0;
+                      width: 100%;
+                      height: 100%;
+                    `]}
+                  />
+                </a>
+
+                <div css={[css`
+                  border-top: 1px solid rgb(226, 226, 226);
                 `]}
                 >
-                  {content?.title}
-                </h4>
+                  <h4 css={[css`
+                    padding: 0.5rem;
+                    white-space: initial;
+                  `]}
+                  >
+                    {content?.title}
+                  </h4>
+                </div>
 
               </div>
 
             </div>
-
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
-
-      {/* {posts && ( */}
-      {/*  <> */}
-      {/*    <div> */}
-      {/*      {posts?.content[0]?.title} */}
-      {/*    </div> */}
-      {/*    {' '} */}
-      {/*    <div> */}
-      {/*      {posts?.content[1]?.title} */}
-      {/*    </div> */}
-      {/*    {' '} */}
-      {/*    <div> */}
-      {/*      {posts?.content[2]?.title} */}
-      {/*    </div> */}
-      {/*  </> */}
-      {/* )} */}
     </>
   );
 };
