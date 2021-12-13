@@ -2,12 +2,8 @@ import type { NextPage } from 'next';
 import React, { lazy, Suspense, useState } from 'react';
 import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
 import Layout from '../components/layout';
-import { loadingStyle, loadingWrapper } from '../styles/emotion/loading.style';
-import PulseLoader from '../components/ui/loading/pulse/pulse-loader';
-
-import Contents from '../components/pages/index/contents';
-import { Content } from '../stores/home/home.model';
 import { currentCursorInternal } from '../stores/home/home.store';
+import HomeIndex from '../components/pages/index';
 // const Contents = dynamic(() => import('../components/pages/index/contents'), { suspense: true });
 // const Contents = lazy(() => import('../components/pages/index/contents'));
 
@@ -28,7 +24,7 @@ const Home: NextPage = () => {
       {/*  </div> */}
       {/*  )} */}
       {/* > */}
-      <Contents page={page} setPage={setPage} />
+      <HomeIndex page={page} setPage={setPage} />
       {/* </Suspense> */}
       <br />
       <button
@@ -46,6 +42,19 @@ const Home: NextPage = () => {
         onClick={() => console.log('page :::', page)}
       >
         테스트
+      </button>
+      <button
+        type="button"
+        onClick={() => {
+          window.scrollTo({
+            top: 2000,
+            behavior: 'smooth',
+          });
+
+          console.log('window.scrollY  :::', window.scrollY);
+        }}
+      >
+        테스트22
       </button>
       <div>
         page :
