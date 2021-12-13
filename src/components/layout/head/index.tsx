@@ -12,7 +12,7 @@ const HeadComponent = ({ pageName, home, siteTitle }: Props) => {
       {/* Head */}
       <Head>
         <link rel="icon" href="/favicon.ico" />
-        {/* <meta httpEquiv="Content-Security-Policy" content="upgrade-insecure-requests" /> */}
+        <meta httpEquiv="Content-Security-Policy" content="upgrade-insecure-requests" />
 
         <meta
           name="description"

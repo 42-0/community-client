@@ -1,23 +1,11 @@
-import { css } from '@emotion/react';
 import {
-  selectorFamily,
-  useGetRecoilValueInfo_UNSTABLE, useRecoilState,
-  useRecoilValue,
-  useRecoilValueLoadable, useResetRecoilState,
-  useSetRecoilState,
+  useRecoilValueLoadable,
 } from 'recoil';
-import React, { useEffect, useRef, useState } from 'react';
-import { values } from 'lodash';
+import React, { useEffect, useState } from 'react';
 import {
-  currentCursorInternal,
-  fetchPosts, postsSelector,
-  postsState,
+  postsSelector,
 } from '../../../stores/home/home.store';
-import { Content, Posts } from '../../../stores/home/home.model';
-import {
-  card, cardsItem, container, img, imgWrapper, wrapper,
-} from '../../../styles/emotion/card.style';
-import { useIntersectionObserver } from '../../hooks/useIntersectionObserver';
+import { Content } from '../../../stores/home/home.model';
 import { loadingStyle, loadingWrapper } from '../../../styles/emotion/loading.style';
 import PulseLoader from '../../ui/loading/pulse/pulse-loader';
 import Contents from './contents/contents';
@@ -35,10 +23,10 @@ const HomeIndex = ({
   const [lastScrollY, setLastScrollY] = useState<number>(0);
 
   useEffect(() => {
-    console.log('posts ::::', posts);
-    console.log('window.scrollY  :::', window.scrollY);
-    window.scrollTo({ top: lastScrollY });
+    // console.log('posts ::::', posts);
+    // console.log('window.scrollY  :::', window.scrollY);
     // behavior: 'smooth'
+    window.scrollTo({ top: lastScrollY });
   }, [posts]);
 
   switch (posts.state) {
@@ -60,7 +48,8 @@ const HomeIndex = ({
         </>
       );
     case 'hasError':
-      return <div>{posts.contents}</div>;
+      return <div>Error</div>;
+      // return <div>{posts.contents}</div>;
   }
 };
 

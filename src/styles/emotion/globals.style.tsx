@@ -11,6 +11,8 @@ const style = css`
     padding: 0;
     margin: 0;
     background-color: #F8F9FA;
+    scroll-behavior: smooth;
+
   }
 `;
 

@@ -1,7 +1,7 @@
 import { css } from '@emotion/react';
 
 import React, { useEffect, useRef } from 'react';
-import { Content, Posts } from '../../../../stores/home/home.model';
+import { Content } from '../../../../stores/home/home.model';
 import {
   card, cardsItem, container, img, imgWrapper, wrapper,
 } from '../../../../styles/emotion/card.style';
@@ -27,13 +27,17 @@ const Contents = ({
     {
       threshold: 0, // trigger event as soon as the element is in the viewport.
     },
-    // true, // don't remove the observer after intersected.
     false, // don't remove the observer after intersected.
   );
 
   useEffect(() => {
-    console.log('끝 :::', isBottomVisible);
+    // console.log('끝 :::', isBottomVisible);
     // load next page when bottom is visible
+
+    if (window.scrollY < 2000 && page > 5) {
+      return;
+    }
+
     setLastScrollY(window.scrollY);
     isBottomVisible && setPage(page + 1);
   }, [isBottomVisible]);
@@ -75,9 +79,7 @@ const Contents = ({
               </div>
             </div>
           ))}
-
           <div ref={ref} />
-
         </div>
       </div>
     </>
