@@ -1,6 +1,7 @@
 import { css } from '@emotion/react';
 
 import React, { useEffect, useRef } from 'react';
+import { useRouter } from 'next/router';
 import { Content } from '../../../../stores/home/home.model';
 import {
   card, cardsItem, container, img, imgWrapper, wrapper,
@@ -20,6 +21,8 @@ const Contents = ({
   setPage,
   setLastScrollY,
 }: Props) => {
+  const router = useRouter();
+
   const ref = useRef(null);
 
   const isBottomVisible = useIntersectionObserver(
@@ -31,15 +34,17 @@ const Contents = ({
   );
 
   useEffect(() => {
+    if (!isBottomVisible) {
+      return;
+    }
     // console.log('끝 :::', isBottomVisible);
-    // load next page when bottom is visible
 
     if (window.scrollY < 2000 && page > 5) {
       return;
     }
 
     setLastScrollY(window.scrollY);
-    isBottomVisible && setPage(page + 1);
+    setPage(page + 1);
   }, [isBottomVisible]);
 
   return (
@@ -53,7 +58,7 @@ const Contents = ({
             >
               <div css={[card, css``]}>
                 <a
-                  href="http://localhost:9909"
+                  href={`/${content?.id}`}
                   css={imgWrapper}
                 >
                   {/* <Image src={value?.contentURL} /> */}
@@ -68,13 +73,21 @@ const Contents = ({
                   border-top: 1px solid rgb(226, 226, 226);
                 `]}
                 >
-                  <h4 css={[css`
-                    padding: 0.5rem;
-                    white-space: initial;
-                  `]}
+                  <div onClick={async () => {
+                    setLastScrollY(window.scrollY);
+                    await router.push(`/${content?.id}`);
+                  }}
                   >
-                    {content?.title}
-                  </h4>
+                    <h4
+                      css={[css`
+                        padding: 0.5rem;
+                        white-space: initial;
+                        cursor: pointer;
+                      `]}
+                    >
+                      {content?.title}
+                    </h4>
+                  </div>
                 </div>
               </div>
             </div>

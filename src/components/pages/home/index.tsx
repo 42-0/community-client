@@ -1,8 +1,10 @@
 import {
+  useRecoilState,
   useRecoilValueLoadable,
 } from 'recoil';
 import React, { useEffect, useState } from 'react';
 import {
+  lastScrollYState,
   postsSelector,
 } from '../../../stores/home/home.store';
 import { Content } from '../../../stores/home/home.model';
@@ -20,21 +22,19 @@ const HomeIndex = ({
   setPage,
 }: Props) => {
   const posts = useRecoilValueLoadable<Content[] | undefined>(postsSelector(page));
-  const [lastScrollY, setLastScrollY] = useState<number>(0);
+  const [lastScrollY, setLastScrollY] = useRecoilState<number>(lastScrollYState);
 
   useEffect(() => {
     // console.log('posts ::::', posts);
     // console.log('window.scrollY  :::', window.scrollY);
     // behavior: 'smooth'
-    window.scrollTo({ top: lastScrollY });
+    window.scrollTo({ top: lastScrollY, behavior: 'auto' });
   }, [posts]);
 
   switch (posts.state) {
     case 'hasValue':
       return (
-        <>
-          <Contents posts={posts.contents} page={page} setPage={setPage} setLastScrollY={setLastScrollY} />
-        </>
+        <Contents posts={posts.contents} page={page} setPage={setPage} setLastScrollY={setLastScrollY} />
       );
     case 'loading':
       return (
@@ -44,7 +44,7 @@ const HomeIndex = ({
               <PulseLoader loading />
             </div>
           </div>
-          {/* <Contents posts={posts.contents} /> */}
+          {/* <DetailContents posts={posts.contents} /> */}
         </>
       );
     case 'hasError':

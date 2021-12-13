@@ -1,26 +1,28 @@
 import axios from 'axios';
 import {
-  atom, RecoilState, selector, selectorFamily, useRecoilState, waitForNone,
+  atom, selectorFamily,
 } from 'recoil';
 import { Content } from './home.model';
 
 export const postsState = atom<Content[]>({
-  key: '@pages/home/postsState',
+  key: '@pages/home/posts-state',
   default: [],
 });
-export const currentCursorInternal = atom<number>({
-  key: '@pages/home/currentCursorInternal',
+
+export const currentCursorInternalState = atom<number>({
+  key: '@pages/home/current-cursor-Internal-state',
   default: 1,
+});
+
+export const lastScrollYState = atom<number>({
+  key: '@pages/home/last-scroll-y-state',
+  default: 0,
 });
 
 let postItems: Content[] = [];
 export const fetchPosts = async (page: number): Promise<Content[] | undefined> => {
   try {
     const response = await axios.get(`http://52.78.54.195:3000/contents/list/${page}`);
-
-    // console.log('!!!!!!! postItems ::', postItems);
-    // console.log('!!!!!!! response.data?.content ::', response.data?.content);
-
     const result: Content[] = [...postItems, ...response.data?.content];
     postItems = result;
     return result;
@@ -35,7 +37,6 @@ export const postsSelector = selectorFamily({
   get: (page: number) => async ({ get }) => {
     return fetchPosts(page);
   },
-
 });
 
 // export const postsSelector = selector({
