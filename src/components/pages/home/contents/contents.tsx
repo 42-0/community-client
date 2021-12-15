@@ -1,6 +1,6 @@
 import { css } from '@emotion/react';
 
-import React, { useEffect, useRef } from 'react';
+import React, { useCallback, useEffect, useRef } from 'react';
 import { useRouter } from 'next/router';
 import { Content } from '../../../../stores/home/home.model';
 import {
@@ -22,9 +22,7 @@ const Contents = ({
   setLastScrollY,
 }: Props) => {
   const router = useRouter();
-
   const ref = useRef(null);
-
   const isBottomVisible = useIntersectionObserver(
     ref,
     {
@@ -47,6 +45,11 @@ const Contents = ({
     setPage(page + 1);
   }, [isBottomVisible]);
 
+  const onClickLink = useCallback(async (id) => {
+    setLastScrollY(window.scrollY);
+    await router.push(`/${id}`);
+  }, []);
+
   return (
     <>
       <div css={container}>
@@ -57,9 +60,9 @@ const Contents = ({
               css={[cardsItem, css``]}
             >
               <div css={[card, css``]}>
-                <a
-                  href={`/${content?.id}`}
+                <div
                   css={imgWrapper}
+                  onClick={() => onClickLink(content?.id)}
                 >
                   {/* <Image src={value?.contentURL} /> */}
                   <img
@@ -68,16 +71,12 @@ const Contents = ({
                     alt={content?.title}
                     css={img}
                   />
-                </a>
+                </div>
                 <div css={[css`
                   border-top: 1px solid rgb(226, 226, 226);
                 `]}
                 >
-                  <div onClick={async () => {
-                    setLastScrollY(window.scrollY);
-                    await router.push(`/${content?.id}`);
-                  }}
-                  >
+                  <div onClick={() => onClickLink(content?.id)}>
                     <h4
                       css={[css`
                         padding: 0.5rem;
@@ -99,4 +98,5 @@ const Contents = ({
   );
 };
 
-export default Contents;
+// Props 바뀌지 않으면 리렌더링을 하지 않음
+export default React.memo(Contents);

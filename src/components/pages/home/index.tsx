@@ -2,7 +2,7 @@ import {
   useRecoilState,
   useRecoilValueLoadable,
 } from 'recoil';
-import React, { useEffect, useState } from 'react';
+import React, { lazy, useEffect } from 'react';
 import {
   lastScrollYState,
   postsSelector,
@@ -11,6 +11,7 @@ import { Content } from '../../../stores/home/home.model';
 import { loadingStyle, loadingWrapper } from '../../../styles/emotion/loading.style';
 import PulseLoader from '../../ui/loading/pulse/pulse-loader';
 import Contents from './contents/contents';
+// const Contents = lazy(() => import('./contents/content'));
 
 interface Props {
   page: number;
@@ -24,6 +25,9 @@ const HomeIndex = ({
   const posts = useRecoilValueLoadable<Content[] | undefined>(postsSelector(page));
   const [lastScrollY, setLastScrollY] = useRecoilState<number>(lastScrollYState);
 
+  /**
+   * 로딩후 스크롤 위치 찾아가기위함
+  * */
   useEffect(() => {
     // console.log('posts ::::', posts);
     // console.log('window.scrollY  :::', window.scrollY);
