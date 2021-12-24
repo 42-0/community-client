@@ -1,6 +1,6 @@
 import axios from 'axios';
 import {
-  atom, selectorFamily,
+  atom, selector, selectorFamily, useSetRecoilState,
 } from 'recoil';
 import { Content } from './home.model';
 
@@ -20,7 +20,7 @@ export const lastScrollYState = atom<number>({
 });
 
 let postItems: Content[] = [];
-export const fetchPosts = async (page: number): Promise<Content[] | undefined> => {
+export const fetchPosts = async (page: number): Promise<Content[] > => {
   try {
     const response = await axios.get(`http://52.78.54.195:3000/contents/list/${page}`);
     const result: Content[] = [...postItems, ...response.data?.content];
@@ -29,7 +29,8 @@ export const fetchPosts = async (page: number): Promise<Content[] | undefined> =
   } catch (e) {
     console.error(e);
   }
-  return undefined;
+  // return undefined;
+  return postItems;
 };
 
 export const postsSelector = selectorFamily({
@@ -38,45 +39,3 @@ export const postsSelector = selectorFamily({
     return fetchPosts(page);
   },
 });
-
-// export const postsSelector = selector({
-//   key: '@pages/home/posts',
-//   get: ({ get }) => get(currentCursorInternal),
-//   set: async ({ get, set }) => {
-//     const current = get(currentCursorInternal);
-//     const next = current + 1;
-//
-//     const newData = await fetchPosts(next);
-//     console.log('postsSelector - newData :::', newData);
-//     set(currentCursorInternal, next);
-//     set(postsState, (existing) => [...existing, ...newData]);
-//   },
-// });
-
-/**
- e.g
-
- export const templateSetSelector = selectorFamily({
-  key: '@messages/template-set',
-  get: (no: number) => async () => {
-    return fetchTemplateSet(no);
-  },
-});
-
- export const historiesOfTemplateSetSelector = selectorFamily({
-  key: '@pages/messenger/template-set/histories',
-  get: (templateSetNo: number) => async ({ get }) => {
-    return fetchHistoriesOfTemplateSet(templateSetNo);
-  },
-});
-
- function TemplateSetDetails({ templateSetNo }: Props) {
-  const templateSet = useRecoilValue(templateSetSelector(templateSetNo));
-   이 아래에서는 templateSet 이 존재하는것이 보장됨
-}
-
- <Suspense fallback={<Skeleton />}>
- <TemplateSetDetails />
- </Suspense>
-
- * */
