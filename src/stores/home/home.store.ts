@@ -1,7 +1,5 @@
 import axios from 'axios';
-import {
-  atom, selector, selectorFamily, useSetRecoilState,
-} from 'recoil';
+import { atom } from 'recoil';
 import { Content } from './home.model';
 
 export const postsState = atom<Content[]>({
@@ -33,9 +31,9 @@ export const fetchPosts = async (page: number): Promise<Content[]> => {
   return [];
 };
 
-export const postsSelector = selectorFamily({
-  key: '@pages/home/posts',
-  get: (page: number) => async ({ get }) => {
-    return fetchPosts(page);
-  },
-});
+// export const postsSelector = selectorFamily({
+//   key: '@pages/home/posts',
+//   get: (page: number) => async ({ get }) => {
+//     return fetchPosts(page);
+//   },
+// });

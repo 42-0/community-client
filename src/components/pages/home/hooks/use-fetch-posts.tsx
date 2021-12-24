@@ -16,7 +16,6 @@ const useFetchPosts = ({ page }: Props) => {
   const [lastFetchPage, setLastFetchPage] = useRecoilState<number>(lastFetchPageState);
 
   const [posts, setPosts] = useRecoilState<Content[]>(postsState);
-  // const posts = useRecoilValueLoadable<Content[] | undefined>(postsSelector(page));
 
   const getList = useCallback(async () => {
     setIsLoading(true);
