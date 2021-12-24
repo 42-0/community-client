@@ -1,6 +1,6 @@
 import { NextPage } from 'next';
 import { css } from '@emotion/react';
-import Layout from '../../components/layout/index';
+import Layout from '../../components/layout/layout';
 import PulseLoader from '../../components/ui/loading/pulse/pulse-loader';
 import { loadingStyle, loadingWrapper } from '../../styles/emotion/loading.style';
 import SpinnerLoader from '../../components/ui/loading/spinner/spinner-loader';

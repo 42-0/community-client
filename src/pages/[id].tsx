@@ -2,7 +2,7 @@ import type { NextPage } from 'next';
 import { useRecoilState, useRecoilValueLoadable } from 'recoil';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
-import Layout from '../components/layout';
+import Layout from '../components/layout/layout';
 import { postSelector } from '../stores/detail/detail.store';
 import Detail from '../components/pages/detail/detail';
 import { IDetail } from '../stores/detail/detail.model';

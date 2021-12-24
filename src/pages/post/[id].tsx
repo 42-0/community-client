@@ -1,6 +1,6 @@
 import { NextPage } from 'next';
 import { css } from '@emotion/react';
-import Layout from '../../components/layout/index';
+import Layout from '../../components/layout/layout';
 
 const Post: NextPage = () => {
   const blue = css`

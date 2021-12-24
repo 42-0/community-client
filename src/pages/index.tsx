@@ -1,6 +1,6 @@
 import type { NextPage } from 'next';
 import { useRecoilState } from 'recoil';
-import Layout from '../components/layout';
+import Layout from '../components/layout/layout';
 import { currentCursorInternalState } from '../stores/home/home.store';
 import Home from '../components/pages/home/home';
 // const DetailContents = dynamic(() => import('../components/pages/home/contents'), { suspense: true });

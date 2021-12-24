@@ -6,7 +6,7 @@ import { Content } from '../../../../stores/home/home.model';
 import {
   card, cardsItem, container, img, imgWrapper, wrapper,
 } from '../../../../styles/emotion/card.style';
-import { useIntersectionObserver } from '../../../hooks/useIntersectionObserver';
+import { useIntersectionObserver } from '../../../hooks/use-intersection-observer';
 
 interface Props {
   posts: Content[] | undefined;

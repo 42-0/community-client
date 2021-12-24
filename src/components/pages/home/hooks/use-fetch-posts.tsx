@@ -1,10 +1,10 @@
 import { useCallback, useEffect, useState } from 'react';
 import { useRecoilState } from 'recoil';
-import { Content } from '../../../stores/home/home.model';
+import { Content } from '../../../../stores/home/home.model';
 import {
   fetchPosts, lastFetchPageState,
   postsState,
-} from '../../../stores/home/home.store';
+} from '../../../../stores/home/home.store';
 
 interface Props {
   page: number;

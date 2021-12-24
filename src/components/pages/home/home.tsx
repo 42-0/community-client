@@ -7,8 +7,7 @@ import {
 import { loadingStyle, loadingWrapper } from '../../../styles/emotion/loading.style';
 import PulseLoader from '../../ui/loading/pulse/pulse-loader';
 import Contents from './contents/contents';
-import useFetchPosts from './use-fetch-posts';
-// const Contents = lazy(() => import('./contents/content'));
+import useFetchPosts from './hooks/use-fetch-posts';
 
 interface Props {
   page: number;
@@ -23,12 +22,10 @@ const Home = ({
   const [lastScrollY, setLastScrollY] = useRecoilState<number>(lastScrollYState);
 
   /**
-   * 로딩후 스크롤 위치 찾아가기위함
+   *  스크롤 위치 찾아가기위함
   * */
   // useEffect(() => {
-  //   // console.log('posts ::::', posts);
-  //   // console.log('window.scrollY  :::', window.scrollY);
-  //   // behavior: 'smooth'
+  //   behavior: 'smooth'
   //   window.scrollTo({ top: lastScrollY, behavior: 'auto' });
   // }, [posts]);
 

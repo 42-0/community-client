@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
-import HeadComponent from './head';
-import { main } from './index.style';
+import HeadComponent from './head/head';
+import { main } from './layout.style';
 
 export interface LayoutProps {
   children: ReactNode;
