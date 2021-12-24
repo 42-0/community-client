@@ -20,6 +20,7 @@ const useFetchPosts = ({ page }: Props) => {
 
   const getList = useCallback(async () => {
     setIsLoading(true);
+
     try {
       const data: Content[] = await fetchPosts(page);
       setPosts((currentValue: Content[]) => [...currentValue, ...data]);

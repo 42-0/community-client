@@ -35,8 +35,6 @@ const Contents = ({
     if (!isBottomVisible) {
       return;
     }
-    // console.log('끝 :::', isBottomVisible);
-
     if (window.scrollY < 2000 && page > 5) {
       return;
     }

@@ -15,7 +15,7 @@ interface Props {
   setPage: (value: number) => void;
 }
 
-const HomeIndex = ({
+const Home = ({
   page,
   setPage,
 }: Props) => {
@@ -47,8 +47,9 @@ const HomeIndex = ({
           </div>
         </div>
       )}
+
     </>
   );
 };
 
-export default HomeIndex;
+export default Home;

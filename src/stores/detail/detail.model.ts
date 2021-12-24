@@ -1,4 +1,4 @@
-export interface Detail {
+export interface IDetail {
   id: number;
   siteIdx: number;
   title: string;

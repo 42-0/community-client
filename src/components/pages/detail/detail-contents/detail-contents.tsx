@@ -1,9 +1,8 @@
 import { css } from '@emotion/react';
-
-import { Detail } from '../../../../stores/detail/detail.model';
+import { IDetail } from '../../../../stores/detail/detail.model';
 
 interface Props {
-  post: Detail | undefined;
+  post: IDetail | undefined;
 }
 
 const DetailContents = ({
