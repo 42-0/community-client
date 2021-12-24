@@ -38,6 +38,8 @@ const HomeIndex = ({
 
   return (
     <>
+      <Contents posts={posts} page={page} setPage={setPage} setLastScrollY={setLastScrollY} />
+
       {isLoading && (
         <div css={loadingWrapper}>
           <div css={loadingStyle}>
@@ -45,8 +47,6 @@ const HomeIndex = ({
           </div>
         </div>
       )}
-
-      <Contents posts={posts} page={page} setPage={setPage} setLastScrollY={setLastScrollY} />
     </>
   );
 };

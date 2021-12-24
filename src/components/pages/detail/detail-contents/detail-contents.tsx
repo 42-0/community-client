@@ -11,6 +11,7 @@ const DetailContents = ({
 }: Props) => {
   return (
     <>
+      <a href={post?.contentURL} target="_blank" rel="noreferrer">원글</a>
       <div>
         title :
         {post?.title}
