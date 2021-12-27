@@ -1,22 +1,6 @@
 import { css } from '@emotion/react';
 import { primaryColor } from '../color.style';
 
-export const container = css`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  //flex-wrap: wrap; 
-  //justify-content: center;
-`;
-export const wrapper = css`
-  max-width: 1380px;
-  display: flex;
-  flex-wrap: wrap;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-`;
-
 export const cardsItem = css`
   width: 100%;
   display: flex;

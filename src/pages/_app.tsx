@@ -3,6 +3,13 @@ import { RecoilRoot } from 'recoil';
 
 import GlobalsStyle from '../styles/emotion/globals.style';
 
+declare global {
+  interface Window {
+    googletag?: any;
+    adsbygoogle?: any;
+  }
+}
+
 const MyApp = ({ Component, pageProps }: AppProps) => {
   return (
     <>
