@@ -14,6 +14,7 @@ const HeadComponent = ({ pageName, home, siteTitle }: Props) => {
       <Head>
 
         <script async src="https://securepubads.g.doubleclick.net/tag/js/gpt.js" />
+        {/* <script async src="https://www.googletagservices.com/tag/js/gpt.js" /> */}
 
         <link rel="icon" href="/favicon.ico" />
 
