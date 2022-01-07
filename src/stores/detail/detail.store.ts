@@ -6,7 +6,7 @@ import { IDetail } from './detail.model';
 
 export const fetchPost = async (id: number): Promise<IDetail | undefined> => {
   try {
-    const response = await axios.get(`http://52.78.54.195:3000/contents/${id}`);
+    const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/contents/${id}`);
     return response.data;
   } catch (e) {
     console.error(e);
