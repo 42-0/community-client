@@ -23,7 +23,7 @@ export const lastScrollYState = atom<number>({
 
 export const fetchPosts = async (page: number): Promise<Content[]> => {
   try {
-    const response = await axios.get(`http://52.78.54.195:3000/contents/list/${page}`);
+    const response = await axios.get(`https://dataapi.adop.cc/contents/list/${page}`);
     return response.data?.content;
   } catch (e) {
     console.error(e);

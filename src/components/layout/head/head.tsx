@@ -1,5 +1,4 @@
 import Head from 'next/head';
-import { useEffect } from 'react';
 
 export interface Props {
   pageName: string;
@@ -10,11 +9,9 @@ export interface Props {
 const HeadComponent = ({ pageName, home, siteTitle }: Props) => {
   return (
     <>
-      {/* Head */}
       <Head>
-
-        <script async src="https://securepubads.g.doubleclick.net/tag/js/gpt.js" />
-        {/* <script async src="https://www.googletagservices.com/tag/js/gpt.js" /> */}
+        {/* ad script */}
+        {/* <script async src="https://securepubads.g.doubleclick.net/tag/js/gpt.js" /> */}
 
         <link rel="icon" href="/favicon.ico" />
 

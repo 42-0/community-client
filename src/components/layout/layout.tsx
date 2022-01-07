@@ -13,19 +13,11 @@ const Layout = ({ children, home = false, pageName = '' }: LayoutProps) => {
 
   return (
     <>
-      {/* Head */}
       <HeadComponent pageName={pageName} home={home} siteTitle={siteTitle} />
 
-      {/* Header */}
-      {/* <header> */}
-      {/* <div> 헤더부분 </div> */}
-      {/* </header> */}
-
-      {/* Main */}
       <main css={main}>
         {children}
       </main>
-
     </>
   );
 };
