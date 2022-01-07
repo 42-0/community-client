@@ -2,9 +2,9 @@ import axios from 'axios';
 import {
   selectorFamily,
 } from 'recoil';
-import { Detail } from './detail.model';
+import { IDetail } from './detail.model';
 
-export const fetchPost = async (id: number): Promise<Detail | undefined> => {
+export const fetchPost = async (id: number): Promise<IDetail | undefined> => {
   try {
     const response = await axios.get(`http://52.78.54.195:3000/contents/${id}`);
     return response.data;
